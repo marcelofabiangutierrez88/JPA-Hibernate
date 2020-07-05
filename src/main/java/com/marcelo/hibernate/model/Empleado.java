@@ -3,9 +3,12 @@ package com.marcelo.hibernate.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +25,9 @@ public class Empleado implements Serializable {
 	private String nombre;
 	@Column(name="FECHA_NACIMIENTO")
 	private LocalDate FechaNac;
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="ID_DIRECCION")
+	private Direccion direccion;
 	
 	public Empleado () {
 		
@@ -65,12 +71,20 @@ public class Empleado implements Serializable {
 	public void setFechaNac(LocalDate fechaNac) {
 		FechaNac = fechaNac;
 	}
+	
+	public Direccion getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
 
 	@Override
 	public String toString() {
 		return "Empleado [codigo=" + codigo + ", apellido=" + apellido + ", nombre=" + nombre + ", FechaNac=" + FechaNac
-				+ "]";
+				+ ", direccion=" + direccion + "]";
 	}
+
 	
 	
 	

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.marcelo.hibernate.model.Direccion;
 import com.marcelo.hibernate.model.Empleado;
 
 public class TestEmpleados {
@@ -31,6 +32,7 @@ public class TestEmpleados {
 	public static void insertInicial() {
 
 		Empleado e = new Empleado(10L, "Gutierrez", "Marcelo", LocalDate.of(1988, 3, 29));
+		e.setDireccion(new Direccion(11L, "Calle Falsa 123", "Springfield", "Springfield", "EEUU"));
 		Empleado e2 = new Empleado(15L, "Gutierrez", "Jazmin", LocalDate.of(2008, 9, 18));
 
 		manager.getTransaction().begin();
